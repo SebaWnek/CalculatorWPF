@@ -4,4 +4,4 @@ Based on my previous repository https://github.com/SebaWnek/ConsoleCalculator - 
 Started as new project as it was easier for me to just paste and reuse code instead of modyfing previous repository to add WPF GUI, 
 as it's my first attempt at creating WPF application.
 
-In case of any found bug's or just suggestions I'll be oblige for reporting!
+In case of any found bugs or just suggestions I'll be oblige for reporting!
