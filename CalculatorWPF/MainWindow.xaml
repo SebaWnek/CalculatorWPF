@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorWPF"
         mc:Ignorable="d"
-        Title="WnękoCalculator" Height="450" Width="800"
-        Icon=".\resources\Calculator_16x.png">
+        Title="WnękoCalculator" Height="800" Width="1000"
+        Icon=".\resources\Calculator_16x.png"
+        KeyDown="KeyPressed">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -15,32 +16,62 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="129*"/>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="129*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="121*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="245*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Margin="10" TextWrapping="Wrap" Text="Test equation 2 * 5 ( 7 / 4 )" FontSize="48" TextAlignment="Right" IsUndoEnabled="False" MaxLines="1" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.ColumnSpan="6"/>
-        <Button Content="7" Margin="5" Grid.Row="1" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="8" Margin="5" Grid.Row="1" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="9" Margin="5" Grid.Row="1" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="4" Margin="5" Grid.Row="2" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="5" Margin="5" Grid.Row="2" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="6" Margin="5" Grid.Row="2" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="1" Margin="5" Grid.Row="3" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="2" Margin="5" Grid.Row="3" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="3" Margin="5" Grid.Row="3" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="0" Margin="5" Grid.Row="4" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="." Margin="5" Grid.Row="4" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="+/-" Margin="5" Grid.Row="4" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button x:Name="buttonEquals" Content="=" Margin="5" Grid.Row="6" Grid.Column="7" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="EqualsButton_Click"/>
+        <TextBox x:Name="EquationBox" Margin="10" TextWrapping="Wrap" Text="0" FontSize="48" TextAlignment="Right" IsUndoEnabled="False" MaxLines="1" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.ColumnSpan="8" Background="#FF595959" Foreground="#FFECECEC"/>
+        <Button x:Name="button7" Content="7" Margin="5" Grid.Row="1" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button8" Content="8" Margin="5" Grid.Row="1" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button9" Content="9" Margin="5" Grid.Row="1" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button4" Content="4" Margin="5" Grid.Row="2" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button5" Content="5" Margin="5" Grid.Row="2" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button6" Content="6" Margin="5" Grid.Row="2" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button1" Content="1" Margin="5" Grid.Row="3" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button2" Content="2" Margin="5" Grid.Row="3" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button3" Content="3" Margin="5" Grid.Row="3" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="button0" Content="0" Margin="5" Grid.Row="4" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click" Grid.RowSpan="2"/>
+        <Button x:Name="buttonDot" Content=" . " Margin="5" Grid.Row="4" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click" Grid.RowSpan="2"/>
+        <Button x:Name="buttonPlusMinus" Content="+/-" Margin="5" Grid.Row="4" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.RowSpan="2" Click="ButtonPlusMinus_Click"/>
+        <Button x:Name="buttonLeftPar" Content=" ( " Margin="5" Grid.Row="6" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonRightPar" Content=" ) " Margin="5" Grid.Row="6" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonPlus" Content=" + " Margin="5" Grid.Row="1" Grid.Column="4" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonTimes" Content=" * " Margin="5" Grid.Row="2" Grid.Column="4" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonSqrt" Content=" √ " Margin="5" Grid.Row="3" Grid.Column="4" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonExclamation" Content=" ! " Margin="5" Grid.Row="4" Grid.Column="4" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click" Grid.RowSpan="2"/>
+        <Button x:Name="buttonMMinus" Content="M-" Margin="5" Grid.Row="6" Grid.Column="4" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="MMinusButton_Click"/>
+        <Button x:Name="buttonMinus" Content=" - " Margin="5" Grid.Row="1" Grid.Column="5" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonDivide" Content=" / " Margin="5" Grid.Row="2" Grid.Column="5" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonPower" Content=" ^ " Margin="5" Grid.Row="3" Grid.Column="5" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
+        <Button x:Name="buttonClear" Content="C" Margin="5" Grid.Row="4" Grid.Column="5" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="ClearButton_Click" Grid.RowSpan="2"/>
+        <Button x:Name="buttonBack" Content="←" Margin="5" Grid.Row="4" Grid.Column="6" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BackspaceButton_Click" Grid.RowSpan="2"/>
+        <Button x:Name="buttonMR" Content="MR" Margin="5" Grid.Row="6" Grid.Column="5" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="MRButton_Click"/>
+        <Button x:Name="buttonMPlus" Content="M+" Margin="5" Grid.Row="6" Grid.Column="2" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="MPlusButton_Click"/>
+        <Button x:Name="buttonM" Content="M" Margin="5" Grid.Row="6" Grid.Column="6" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="MButton_Click"/>
+        <ListBox x:Name="previousList" Grid.Column="6" Margin="10" Grid.Row="1" Grid.RowSpan="3" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Foreground="#FFECECEC" FontSize="24" Grid.ColumnSpan="2" SelectionChanged="PreviousList_SelectionChanged">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4B4B4B" Offset="0"/>
+                    <GradientStop Color="#FF1D1D1D" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+        </ListBox>
+        <Label Content="Memory:" Grid.Column="7" Margin="5" Grid.Row="4" Foreground="#FFFCFCFC" FontSize="24" Background="#FF212121"/>
+        <TextBox x:Name="MemoryBox" Grid.Column="7" Margin="5" Grid.Row="5" TextWrapping="Wrap" Text="0" FontSize="36" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Foreground="#FFFCFCFC" Background="#FF1D1D1D"/>
     </Grid>
 </Window>
