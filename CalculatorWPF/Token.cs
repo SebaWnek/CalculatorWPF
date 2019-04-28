@@ -15,7 +15,7 @@ namespace CalculatorWPF
         string symbol = " ";
         public enum Associativity { left, right };
         Associativity assoc = Associativity.left;
-        public enum Type { number, oper, leftBra, rightBra, notAToken }
+        public enum Type { number, oper, leftBra, rightBra, notAToken, error }
         Type typeOf { get; set; } = Type.notAToken;
 
         //access to properties
@@ -155,7 +155,9 @@ namespace CalculatorWPF
             //if unknown operator
             else
             {
-                throw new SystemException("Detected wrong sign!");
+                System.Windows.MessageBox.Show("Detected wrong sign!");
+                t.typeOf = Type.error;
+                return t;
             }
         }
 

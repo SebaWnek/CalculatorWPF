@@ -37,6 +37,22 @@ namespace CalculatorWPF
                 System.Windows.MessageBox.Show("Something is wrong!");
                 return 0;
             }
+            else if (equation.Contains(",,"))
+            {
+                while (equation.Contains(",,"))
+                {
+                    equation = equation.Replace(",,", ",");
+                }
+            }
+            else if (equation[0] == ',')
+            {
+                equation = "0" + equation;
+            }
+            else if (equation[equation.Length-1] == ',')
+            {
+                equation = equation + "0";
+            }
+
 
             //rearrange equation into array of tokens
             equation = equation.Replace("  ", " ");
@@ -75,8 +91,14 @@ namespace CalculatorWPF
         static Queue<Token> ShuntingYard(Token[] tokens)
         {
             //create queue and stack
-            Queue<Token> output = new Queue<Token>();
+            Queue <Token> output = new Queue<Token>();
             Stack<Token> operators = new Stack<Token>();
+
+            //if contains error code token
+            if (tokens.Where(x => x.GetTokenType == Token.Type.error).Count() > 0)
+            {
+                return output;
+            }
 
             //go over all input tokens
             for (int i = 0; i < tokens.Length; i++)
@@ -135,6 +157,8 @@ namespace CalculatorWPF
                         if (operators.Count == 0)
                         {
                             System.Windows.MessageBox.Show("Unmatched parenthesis!");
+                            output.Clear();
+                            return output;
                         }
 
                         else if (operators.Peek().GetTokenType != Token.Type.leftBra)

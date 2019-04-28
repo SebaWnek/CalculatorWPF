@@ -33,12 +33,7 @@ namespace CalculatorWPF
         {
             Equation += (sender as Button).Content.ToString();
             EquationBox.Text = Equation;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Equation = "0";
-            EquationBox.Text = Equation;
+            Keyboard.Focus(buttonEquals);
         }
 
         private void MPlusButton_Click(object sender, RoutedEventArgs e)
@@ -140,7 +135,9 @@ namespace CalculatorWPF
                 case Key.Back:
                     buttonBack.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                     break;
-
+                case Key.Delete:
+                    buttonClear.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    break;
             }
         }
 
@@ -173,8 +170,8 @@ namespace CalculatorWPF
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            Equation = "0";
-            EquationBox.Text = Equation;
+            Equation = "";
+            EquationBox.Text = "0";
         }
 
         private void PreviousList_SelectionChanged(object sender, SelectionChangedEventArgs e)
