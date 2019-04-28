@@ -50,7 +50,7 @@ namespace CalculatorWPF
             }
             else if (equation[equation.Length-1] == ',')
             {
-                equation = equation + "0";
+                equation += "0";
             }
 
 

@@ -43,6 +43,7 @@ namespace CalculatorWPF
             {
                 Memory += tmp;
                 MemoryBox.Text = Memory.ToString();
+                Keyboard.Focus(buttonEquals);
             }
         }
 
@@ -50,6 +51,7 @@ namespace CalculatorWPF
         {
             Memory = 0;
             MemoryBox.Text = Memory.ToString();
+            Keyboard.Focus(buttonEquals);
         }
 
         private void MMinusButton_Click(object sender, RoutedEventArgs e)
@@ -59,13 +61,15 @@ namespace CalculatorWPF
             {
                 Memory -= tmp;
                 MemoryBox.Text = Memory.ToString();
+                Keyboard.Focus(buttonEquals);
             }
         }
 
         private void MButton_Click(object sender, RoutedEventArgs e)
         {
-            Equation = Memory.ToString();
+            Equation += Memory.ToString();
             EquationBox.Text = Equation;
+            Keyboard.Focus(buttonEquals);
         }
 
         private void KeyPressed(object sender, KeyEventArgs e)
@@ -139,6 +143,8 @@ namespace CalculatorWPF
                     buttonClear.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                     break;
             }
+
+            Keyboard.Focus(buttonEquals);
         }
 
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
@@ -153,8 +159,9 @@ namespace CalculatorWPF
                 {
                     Equation = Equation.Substring(0, Equation.Length - 3);
                 }
-                EquationBox.Text = Equation; 
+                EquationBox.Text = Equation;
             }
+            Keyboard.Focus(buttonEquals);
         }
 
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
@@ -166,12 +173,14 @@ namespace CalculatorWPF
                 previousList.Items.Insert(0, new Equation(Equation, result));
                 Equation = result.ToString();
             }
+            Keyboard.Focus(buttonEquals);
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             Equation = "";
             EquationBox.Text = "0";
+            Keyboard.Focus(buttonEquals);
         }
 
         private void PreviousList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -179,6 +188,7 @@ namespace CalculatorWPF
             Equation eq = (Equation)previousList.SelectedItem;
             Equation = eq.Text;
             EquationBox.Text = eq.Text;
+            Keyboard.Focus(buttonEquals);
         }
 
         private void ButtonPlusMinus_Click(object sender, RoutedEventArgs e)
@@ -192,6 +202,7 @@ namespace CalculatorWPF
                 Equation = Equation.Substring(8, Equation.Length - 11);
             }
             EquationBox.Text = Equation;
+            Keyboard.Focus(buttonEquals);
         }
     }
 }
