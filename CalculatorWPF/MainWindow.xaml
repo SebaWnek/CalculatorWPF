@@ -34,7 +34,7 @@
             <ColumnDefinition Width="121*"/>
             <ColumnDefinition Width="245*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonEquals" Content="=" Margin="5" Grid.Row="6" Grid.Column="7" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="EqualsButton_Click"/>
+        <Button x:Name="buttonEquals" Content="=" Margin="5" Grid.Row="6" Grid.Column="7" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="EqualsButton_Click" IsDefault="True"/>
         <TextBox x:Name="EquationBox" Margin="10" TextWrapping="Wrap" Text="0" FontSize="48" TextAlignment="Right" IsUndoEnabled="False" MaxLines="1" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.ColumnSpan="8" Background="#FF595959" Foreground="#FFECECEC"/>
         <Button x:Name="button7" Content="7" Margin="5" Grid.Row="1" Grid.Column="0" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>
         <Button x:Name="button8" Content="8" Margin="5" Grid.Row="1" Grid.Column="1" FontSize="48" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="TextButton_Click"/>

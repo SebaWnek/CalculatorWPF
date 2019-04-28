@@ -146,15 +146,18 @@ namespace CalculatorWPF
 
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Equation[Equation.Length - 1] != ' ')
+            if (Equation.Length > 0)
             {
-                Equation = Equation.Substring(0, Equation.Length - 1);
+                if (Equation[Equation.Length - 1] != ' ')
+                {
+                    Equation = Equation.Substring(0, Equation.Length - 1);
+                }
+                else
+                {
+                    Equation = Equation.Substring(0, Equation.Length - 3);
+                }
+                EquationBox.Text = Equation; 
             }
-            else
-            {
-                Equation = Equation.Substring(0, Equation.Length - 3);
-            }
-            EquationBox.Text = Equation;
         }
 
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
