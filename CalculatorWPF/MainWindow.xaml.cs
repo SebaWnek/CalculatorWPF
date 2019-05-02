@@ -26,7 +26,7 @@ namespace CalculatorWPF
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
+            WindowBlur.SetIsEnabled(this, true);
         }
 
         private void TextButton_Click(object sender, RoutedEventArgs e)
@@ -171,7 +171,7 @@ namespace CalculatorWPF
                 double result = CalculatorBackEnd.Calculate(Equation);
                 EquationBox.Text = result.ToString();
                 previousList.Items.Insert(0, new Equation(Equation, result));
-                Equation = result.ToString();
+                Equation = "";
             }
             Keyboard.Focus(buttonEquals);
         }
@@ -203,6 +203,45 @@ namespace CalculatorWPF
             }
             EquationBox.Text = Equation;
             Keyboard.Focus(buttonEquals);
+        }
+
+        private void ButtonPercent_Click(object sender, RoutedEventArgs e)
+        {
+            Equation += " * 0,01";
+            EquationBox.Text = Equation;
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            this.DragMove();
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+            Keyboard.Focus(buttonEquals);
+        }
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Maximized;
+                maximizeButton.Content = "🗗";
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+                maximizeButton.Content = "🗖";
+            }
+            Keyboard.Focus(buttonEquals);
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
 }
