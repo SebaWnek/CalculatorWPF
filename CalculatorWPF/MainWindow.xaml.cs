@@ -74,74 +74,99 @@ namespace CalculatorWPF
 
         private void KeyPressed(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
             {
-                case Key.Enter:
-                    buttonEquals.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D0:
-                case Key.NumPad0:
-                    button0.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D1:
-                case Key.NumPad1:
-                    button1.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D2:
-                case Key.NumPad2:
-                    button2.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D3:
-                case Key.NumPad3:
-                    button3.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D4:
-                case Key.NumPad4:
-                    button4.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D5:
-                case Key.NumPad5:
-                    button5.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D6:
-                case Key.NumPad6:
-                    button6.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D7:
-                case Key.NumPad7:
-                    button7.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D8:
-                case Key.NumPad8:
-                    button8.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.D9:
-                case Key.NumPad9:
-                    button9.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.OemPeriod:
-                case Key.OemComma:
-                case Key.Decimal:
-                    buttonDot.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Add:
-                    buttonPlus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Subtract:
-                    buttonMinus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Divide:
-                    buttonDivide.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Multiply:
-                    buttonTimes.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Back:
-                    buttonBack.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
-                case Key.Delete:
-                    buttonClear.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                    break;
+                switch (e.Key)
+                {
+                    case Key.D9:
+                        buttonLeftPar.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D0:
+                        buttonRightPar.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D8:
+                        buttonTimes.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D6:
+                        buttonPower.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D5:
+                        buttonPercent.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                }
+            }
+            else
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        buttonEquals.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D0:
+                    case Key.NumPad0:
+                        button0.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D1:
+                    case Key.NumPad1:
+                        button1.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D2:
+                    case Key.NumPad2:
+                        button2.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D3:
+                    case Key.NumPad3:
+                        button3.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D4:
+                    case Key.NumPad4:
+                        button4.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D5:
+                    case Key.NumPad5:
+                        button5.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D6:
+                    case Key.NumPad6:
+                        button6.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D7:
+                    case Key.NumPad7:
+                        button7.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D8:
+                    case Key.NumPad8:
+                        button8.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.D9:
+                    case Key.NumPad9:
+                        button9.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.OemPeriod:
+                    case Key.OemComma:
+                    case Key.Decimal:
+                        buttonDot.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Add:
+                        buttonPlus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Subtract:
+                        buttonMinus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Divide:
+                    case Key.OemQuestion:
+                        buttonDivide.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Multiply:
+                        buttonTimes.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Back:
+                        buttonBack.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.Delete:
+                        buttonClear.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                }
             }
 
             Keyboard.Focus(buttonEquals);
