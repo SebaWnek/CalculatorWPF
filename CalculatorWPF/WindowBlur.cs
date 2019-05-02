@@ -4,6 +4,10 @@ using System.Windows;
 using System.Windows.Interop;
 using CalculatorWPF.Native;
 
+/// <summary>
+/// Code taken from https://gist.github.com/walterlv/752669f389978440d344941a5fcd5b00
+/// </summary>
+
 namespace CalculatorWPF
 {
     public class WindowBlur
@@ -167,9 +171,9 @@ namespace CalculatorWPF
 
         internal enum WindowCompositionAttribute
         {
-            // 省略其他未使用的字段
+
             WCA_ACCENT_POLICY = 19,
-            // 省略其他未使用的字段
+
         }
     }
 }
