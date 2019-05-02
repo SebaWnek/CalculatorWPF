@@ -93,6 +93,15 @@ namespace CalculatorWPF
                     case Key.D5:
                         buttonPercent.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                         break;
+                    case Key.D1:
+                        buttonExclamation.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.OemPlus:
+                        buttonPlus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;
+                    case Key.OemMinus:
+                        buttonMinus.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        break;  
                 }
             }
             else
